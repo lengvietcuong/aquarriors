@@ -1,4 +1,4 @@
-import DonateButton from "@/components/big-buttons/DonateButton";
+import DonateButton from "@/components/vi/big-buttons/DonateButton";
 import { SparklesCore } from "@/components/ui/sparkles";
 
 function CTA() {
@@ -16,10 +16,10 @@ function CTA() {
       <div className="absolute top-1/2 -z-20 h-full w-full -translate-y-1/2 bg-gradient-to-r from-secondary to-transparent" />
       <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:gap-16 lg:gap-32">
         <h3 className="text-center text-2xl font-light md:text-3xl lg:text-4xl">
-          Are you ready to
+          Bạn đã sẵn sàng
           <br />
           <span className="bg-gradient-to-br from-primary/50 to-primary bg-clip-text font-bold text-transparent dark:from-secondary-foreground dark:to-primary">
-            make a difference?
+            tạo nên sự khác biệt?
           </span>
         </h3>
         <DonateButton />

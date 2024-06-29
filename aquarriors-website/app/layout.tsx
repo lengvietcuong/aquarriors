@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Lobster } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/header/Header";
-import Footer from "@/components/Footer";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Aquarriors",
@@ -42,10 +40,8 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${lobster.variable} ${sanfracisco.variable} font-body min-h-screen`}
       >
-        <Header />
         {children}
         <Toaster />
-        <Footer />
       </body>
     </html>
   );

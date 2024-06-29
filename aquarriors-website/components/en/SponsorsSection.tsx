@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
-import Apple from "./icons/Apple";
-import Amazon from "./icons/Amazon";
-import Facebook from "./icons/Facebook";
-import Netflix from "./icons/Netflix";
-import Google from "./icons/Google";
-import { Button } from "./ui/button";
+import Apple from "../icons/Apple";
+import Amazon from "../icons/Amazon";
+import Facebook from "../icons/Facebook";
+import Netflix from "../icons/Netflix";
+import Google from "../icons/Google";
+import { Button } from "../ui/button";
 import { MdEmail as EmailIcon } from "react-icons/md";
 import { FaPhone as PhoneIcon } from "react-icons/fa6";
 
@@ -67,8 +67,8 @@ function SponsorsSection() {
       </InfiniteMovingCards>
 
       <p className="mt-12 md:mt-16 text-center text-lg text-muted-foreground md:text-xl lg:text-2xl">
-        Want to support the cleanup and build your brand image?
-        Let's get in touch.
+        Want to support the cleanup and build your brand image? Let's get in
+        touch.
       </p>
       <div className="mt-4 flex flex-col justify-center gap-4 sm:flex-row">
         <a href="tel:+84899150016" target="_blank" rel="noopener noreferrer">
