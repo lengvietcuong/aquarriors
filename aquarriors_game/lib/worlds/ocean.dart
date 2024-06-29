@@ -180,7 +180,7 @@ class Ocean extends World with HasGameRef {
   }
 
   void _spawnTrappedSeaAnimals() {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 50; i++) {
       int randomIndex = Random().nextInt(trappedFishInfo.length);
       final randomTrappedFish = trappedFishInfo[randomIndex];
       add(TrappedSeaAnimal(

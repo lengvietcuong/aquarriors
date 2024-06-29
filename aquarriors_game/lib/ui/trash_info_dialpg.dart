@@ -18,6 +18,7 @@ class TrashInfoDialog extends StatelessWidget {
 
   void _handleOpenTrashCollection() {
     game.overlays.remove("$trashName Dialog");
+    game.overlays.add("Trash Collection");
   }
 
   @override

@@ -15,8 +15,7 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
     super.onLoad();
     sprite = Sprite(Flame.images.fromCache("Player/Hook.png"));
     size = Vector2(24, 24);
-    hitbox = RectangleHitbox(position: Vector2(0, 0), size: size)
-      ..debugMode = true;
+    hitbox = RectangleHitbox(position: Vector2(0, 0), size: size);
 
     hitbox.collisionType = CollisionType.active;
     add(hitbox);
