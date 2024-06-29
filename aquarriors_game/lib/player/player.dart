@@ -39,6 +39,7 @@ class Player extends PositionComponent with HasGameRef {
   bool floating = false;
 
   bool zoomingIn = false;
+  bool zoomingOut = false;
 
   @override
   FutureOr<void> onLoad() async {
@@ -78,6 +79,11 @@ class Player extends PositionComponent with HasGameRef {
       }
     }
 
+    if (zoomingOut) {
+      game.camera.viewfinder.zoom =
+          max(1.0, game.camera.viewfinder.zoom - 0.5 * dt);
+    }
+
     _linkCameraMovementWithBackground(dt);
   }
 
@@ -115,15 +121,13 @@ class Player extends PositionComponent with HasGameRef {
     game.camera.viewfinder.zoom = 1.0;
     zoomingIn = true;
 
+    character.current = CharacterState.casting;
     Future.delayed(const Duration(milliseconds: castingTime), () {
       game.camera.follow(scrappingHook.hook);
       game.camera.viewfinder.anchor =
           Anchor(-(absolutePosition.x / game.size.x), -0.4);
-    });
-
-    character.current = CharacterState.casting;
-    Future.delayed(const Duration(milliseconds: castingTime), () {
       add(scrappingHook);
+
       game.overlays.remove("Casting Button");
       game.overlays.add("Reeling Button");
       // game.camera.follow(scrappingHook);
@@ -134,6 +138,17 @@ class Player extends PositionComponent with HasGameRef {
     scrappingHook.casting = false;
     scrappingHook.hookDescending = false;
     scrappingHook.reeling = true;
+
+    Future.delayed(const Duration(seconds: 1), () {
+      character.current = CharacterState.idle;
+
+      zoomingOut = true;
+
+      game.camera.follow(parent as Player);
+      game.camera.viewfinder.anchor =
+          Anchor(playerOffsetX / size.x, (size.y - playerOffsetY) / size.y);
+      removeFromParent();
+    });
   }
 
   void _linkCameraMovementWithBackground(double dt) {

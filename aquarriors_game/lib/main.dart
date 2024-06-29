@@ -13,8 +13,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
-  // await Hive.openBox("gameData");
+  await Hive.openBox("gameData");
   // await Hive.openBox("aquarium");
+  // await Hive.deleteFromDisk();
 
   runApp(const MainApp());
 }

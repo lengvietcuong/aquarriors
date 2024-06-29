@@ -98,6 +98,10 @@ class Ocean extends World with HasGameRef {
     super.onLoad();
 
     game.overlays.add("Casting Button");
+    game.overlays.add("Upgrade Button");
+    game.overlays.add("Aquarium Button");
+    game.overlays.add("Catalog Button");
+    game.overlays.add("Coin Counter");
 
     for (int i = 0; i < 200; i++) {
       int randomIndex = Random().nextInt(10);

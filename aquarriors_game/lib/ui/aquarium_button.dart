@@ -1,5 +1,6 @@
 import 'package:aquarriors_game/aquarriors_game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AquariumButton extends StatelessWidget {
   const AquariumButton({super.key, required this.game});
@@ -7,6 +8,26 @@ class AquariumButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Positioned(
+      bottom: 20,
+      left: 100,
+      child: Material(
+        color: Colors.transparent,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset("assets/images/UI/Aquarium.svg"),
+            const SizedBox(height: 2),
+            const Text(
+              "Aquarium",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

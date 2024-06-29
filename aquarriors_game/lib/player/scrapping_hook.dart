@@ -2,9 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:aquarriors_game/player/character.dart';
 import 'package:aquarriors_game/player/hook.dart';
-import 'package:aquarriors_game/player/player.dart';
 import 'package:flame/components.dart';
 
 const double scrappingHookOffsetX = 220;
@@ -121,16 +119,6 @@ class ScrappingHook extends PositionComponent with HasGameRef {
       reeling = false;
       game.overlays.remove("Reeling Button");
       game.overlays.add("Casting Button");
-
-      (parent as Player).character.current = CharacterState.idle;
-
-      game.camera.viewfinder.zoom =
-          max(1.0, game.camera.viewfinder.zoom - 0.5 * dt);
-
-      game.camera.follow(parent as Player);
-      game.camera.viewfinder.anchor =
-          Anchor(playerOffsetX / size.x, (size.y - playerOffsetY) / size.y);
-      removeFromParent();
     }
   }
 }
