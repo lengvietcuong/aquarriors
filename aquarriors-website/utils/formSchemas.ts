@@ -13,7 +13,7 @@ export const donationFormSchema = z.object({
     .trim()
     .min(2, { message: "Must be at least 2 characters." })
     .max(50, { message: "Must be at most 50 characters." })
-    .refine((name) => /^[\p{L}\p{Z}]+$/gu.test(name), {
+    .refine((name) => /^[a-zA-Z\s]+$/g.test(name), {
       message: "Only alphabetic characters and spaces allowed.",
     }),
   email: z.string().trim().email({ message: "Invalid email address." }),
@@ -45,7 +45,7 @@ export const volunteerFormSchema = z.object({
     .max(50, {
       message: "Must be at most 50 characters.",
     })
-    .refine((name) => /^[\p{L}\p{Z}]+$/gu.test(name), {
+    .refine((name) => /^[a-zA-Z\s]+$/g.test(name), {
       message: "Only alphabetic characters and spaces allowed.",
     }),
   email: z.string().trim().email({

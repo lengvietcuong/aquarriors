@@ -67,7 +67,7 @@ function SponsorsSection() {
       </InfiniteMovingCards>
 
       <p className="mt-12 md:mt-16 text-center text-lg text-muted-foreground md:text-xl lg:text-2xl">
-        Want to support the cleanup and build your brand image? Let's get in
+        Want to support the cleanup and build your brand image? Let&apos;s get in
         touch.
       </p>
       <div className="mt-4 flex flex-col justify-center gap-4 sm:flex-row">
