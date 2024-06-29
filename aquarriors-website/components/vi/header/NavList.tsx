@@ -23,7 +23,7 @@ function NavList() {
         <li className="text-lg font-medium hover:text-primary lg:transition-colors">
           <a
             className="cursor-pointer"
-            onClick={(e) => scrollTo(e, "sponsor")}
+            onClick={(e) => scrollTo(e, "sponsors")}
           >
             Tài trợ
           </a>

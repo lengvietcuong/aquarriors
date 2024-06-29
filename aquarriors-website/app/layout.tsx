@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="scroll-smooth scroll-pt-24 dark">
       <body
         className={`${montserrat.variable} ${lobster.variable} ${sanfracisco.variable} font-body min-h-screen`}
       >

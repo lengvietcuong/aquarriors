@@ -23,7 +23,7 @@ function InfiniteMovingCards({ children }: { children: ReactNode }) {
 
 function SponsorsSection() {
   return (
-    <section className="p-section">
+    <section id="sponsors" className="p-section">
       <h2 className="mb-8 lg:mb-16 text-3xl md:text-4xl lg:text-5xl font-bold text-center">
         Sponsors who make this possible
       </h2>
