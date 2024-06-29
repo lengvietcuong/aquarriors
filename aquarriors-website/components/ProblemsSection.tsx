@@ -71,8 +71,8 @@ function ProblemsSection() {
           </h3>
           <Image
             className="rounded-lg"
-            src={poisonousWater}
-            alt="Poisonous water"
+            src={cryingRiver}
+            alt="Crying river"
           />
           <p className="text-muted-foreground text-xs mt-2">
             AI-generated image by{" "}
