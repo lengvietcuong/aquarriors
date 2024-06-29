@@ -4,8 +4,8 @@ function StatisticsSection() {
       <h2 className="font-bold text-center text-3xl md:text-4xl lg:text-5xl">
         The damange is <span className="text-destructive">unprecedented</span>
       </h2>
-      <div className="mt-10 md:mt-12 lg:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-lg mx-auto md:max-w-none">
-        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden h-36 md:h-40 lg:h-48">
+      <div className="mt-10 md:mt-12 lg:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-lg mx-auto sm:max-w-none">
+        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden min-h-36 md:min-h-40 lg:min-h-52">
           <div className="absolute top-0 -translate-y-1/2 block left-1/2 -translate-x-1/2 bg-[radial-gradient(farthest-side,rgba(202,46,46,0.3),rgba(0,0,0,0))] w-full h-1/2 -z-10"></div>
           <p className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             10-233
@@ -25,7 +25,7 @@ function StatisticsSection() {
             Source
           </a>
         </div>
-        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden h-36 md:h-40 lg:h-48">
+        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden min-h-36 md:min-h-40 lg:min-h-52">
           <div className="absolute top-0 -translate-y-1/2 block left-1/2 -translate-x-1/2 bg-[radial-gradient(farthest-side,rgba(202,46,46,0.3),rgba(0,0,0,0))] w-full h-1/2 -z-10"></div>
           <p className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             17.2M
@@ -45,7 +45,7 @@ function StatisticsSection() {
             Source
           </a>
         </div>
-        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden h-36 md:h-40 lg:h-48">
+        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden min-h-36 md:min-h-40 lg:min-h-52">
           <div className="absolute top-0 -translate-y-1/2 block left-1/2 -translate-x-1/2 bg-[radial-gradient(farthest-side,rgba(202,46,46,0.3),rgba(0,0,0,0))] w-full h-1/2 -z-10"></div>
           <p className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             60%
@@ -66,7 +66,7 @@ function StatisticsSection() {
             Source
           </a>
         </div>
-        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden h-36 md:h-40 lg:h-48">
+        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden min-h-36 md:min-h-40 lg:min-h-52">
           <div className="absolute top-0 -translate-y-1/2 block left-1/2 -translate-x-1/2 bg-[radial-gradient(farthest-side,rgba(202,46,46,0.3),rgba(0,0,0,0))] w-full h-1/2 -z-10"></div>
           <p className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             9,000
@@ -84,7 +84,7 @@ function StatisticsSection() {
             Source
           </a>
         </div>
-        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden h-36 md:h-40 lg:h-48">
+        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden min-h-36 md:min-h-40 lg:min-h-52">
           <div className="absolute top-0 -translate-y-1/2 block left-1/2 -translate-x-1/2 bg-[radial-gradient(farthest-side,rgba(202,46,46,0.3),rgba(0,0,0,0))] w-full h-1/2 -z-10"></div>
           <p className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             200,000
@@ -102,7 +102,7 @@ function StatisticsSection() {
             Source
           </a>
         </div>
-        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden h-36 md:h-40 lg:h-48">
+        <div className="p-8 pb-12 rounded-lg border relative overflow-hidden min-h-36 md:min-h-40 lg:min-h-52">
           <div className="absolute top-0 -translate-y-1/2 block left-1/2 -translate-x-1/2 bg-[radial-gradient(farthest-side,rgba(202,46,46,0.3),rgba(0,0,0,0))] w-full h-1/2 -z-10"></div>
           <p className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             250,000
