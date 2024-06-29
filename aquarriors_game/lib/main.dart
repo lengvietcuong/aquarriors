@@ -1,5 +1,6 @@
 import 'package:aquarriors_game/aquarriors_game.dart';
 import 'package:aquarriors_game/ui/casting_button.dart';
+import 'package:aquarriors_game/ui/reeling_button.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,9 @@ class MainApp extends StatelessWidget {
         overlayBuilderMap: {
           "Casting Button": (context, AquarriorsGame game) {
             return CastingButton(game: game);
+          },
+          "Reeling Button": (context, AquarriorsGame game) {
+            return ReelingButton(game: game);
           }
         },
       ),

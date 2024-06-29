@@ -10,6 +10,8 @@ class ReelingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
+      bottom: 20,
+      right: 40,
       child: SpriteButton(
         sprite: Sprite(Flame.images.fromCache("UI/Reeling Button.png")),
         pressedSprite: Sprite(Flame.images.fromCache("UI/Reeling Button.png")),

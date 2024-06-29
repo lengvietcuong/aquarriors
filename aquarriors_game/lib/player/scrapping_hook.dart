@@ -2,9 +2,14 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:aquarriors_game/player/character.dart';
 import 'package:aquarriors_game/player/hook.dart';
+import 'package:aquarriors_game/player/player.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
+
+const double scrappingHookOffsetX = 218;
+const double scrappingHookOffsetY = -12;
 
 // projectile motion
 const double gravity = 981;
@@ -20,6 +25,9 @@ final double linelength =
     baseVelocity * baseVelocity * sin(2 * launchAngle) / gravity;
 const double angularVelocity = pi / 6;
 const double circularMotionPeriod = 2 * pi / angularVelocity;
+
+// constant acceleration motion
+const double reelingAcceleration = -300;
 
 class ScrappingHook extends PositionComponent with HasGameRef {
   final List<Offset> points = [];
@@ -72,9 +80,13 @@ class ScrappingHook extends PositionComponent with HasGameRef {
     if (casting) {
       _handleCasting(dt);
     }
-    if (hookDescending) {
+    if (hookDescending && !reeling) {
       _handleHookDescending(dt);
     }
+    if (reeling) {
+      _handleReeling(dt);
+    }
+
     hook.position = Vector2(points[1].dx - 5, points[1].dy - 2);
   }
 
@@ -92,6 +104,29 @@ class ScrappingHook extends PositionComponent with HasGameRef {
       vy = linelength * angularVelocity * cos(launchAngle * hookDescendingTime);
 
       points[1] = points[1].translate(vx * dt, vy * dt);
+    } else {
+      hookDescending = false;
+    }
+  }
+
+  void _handleReeling(double dt) {
+    vx += reelingAcceleration * dt;
+    vy += reelingAcceleration * dt;
+
+    points[1] = Offset(
+      max(0, points[1].dx + vx * dt),
+      max(0, points[1].dy + vy * dt),
+    );
+
+    game.camera.viewfinder.zoom =
+        max(1.0, game.camera.viewfinder.zoom - 0.5 * dt);
+
+    if (points[1] == Offset.zero) {
+      reeling = false;
+      game.overlays.remove("Reeling Button");
+      game.overlays.add("Casting Button");
+      (parent as Player).character.current = CharacterState.idle;
+      removeFromParent();
     }
   }
 }

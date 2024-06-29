@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:aquarriors_game/constants.dart';
 import 'package:aquarriors_game/player/player.dart';
 import 'package:aquarriors_game/scenes/parallax_background.dart';
 import 'package:aquarriors_game/scenes/water.dart';
@@ -9,13 +10,15 @@ import 'package:aquarriors_game/worlds/ocean.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame/parallax.dart';
 
 class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
   final oceanWorld = Ocean();
   final aquariumWorld = Aquarium();
   final water = Water();
   final player = Player();
-  final parallaxBackground = ParallaxBackground();
+  // final parallaxBackground = ParallaxBackground();
+  late ParallaxComponent parallaxBackground;
 
   @override
   Color backgroundColor() => const Color(0xFFE3E0D0);
@@ -59,10 +62,28 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
 
     await _loadAllImages();
 
-    camera.backdrop = parallaxBackground;
+    // camera.backdrop = parallaxBackground;
+    await _loadParallaxBackground();
 
+    world.add(parallaxBackground);
     world.add(player);
     world.add(water);
+  }
+
+  Future<void> _loadParallaxBackground() async {
+    parallaxBackground = await loadParallaxComponent(
+      [
+        ParallaxImageData("Scenes/Ocean Background.png"),
+        ParallaxImageData("Scenes/Land 1.png"),
+        ParallaxImageData("Scenes/Land 2.png"),
+        ParallaxImageData("Scenes/Land 3.png"),
+      ],
+      fill: LayerFill.none,
+      velocityMultiplierDelta: Vector2(1.8, 1),
+      size: Vector2(5000, size.y),
+      position: Vector2(0, size.y - waterLevel),
+      anchor: Anchor.bottomLeft,
+    );
   }
 
   @override

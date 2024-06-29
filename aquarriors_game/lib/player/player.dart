@@ -17,10 +17,17 @@ const double boatMaxSpeed = 200;
 const int castingTime = 800;
 const double extraZoom = 0.5;
 
+// link camera with parallax component
+
 class Player extends PositionComponent with HasGameRef {
+  Vector2 lastCameraPosition = Vector2.zero();
+  static final backgroundVelocity = Vector2(3.0, 0);
+  static const framesPerSec = 60.0;
+  static const threshold = 0.005;
+
   final character = Character();
   final boat = Boat();
-  final scrappingHook = ScrappingHook();
+  late ScrappingHook scrappingHook;
 
   double velocity = 0;
 
@@ -28,7 +35,7 @@ class Player extends PositionComponent with HasGameRef {
   bool backward = false;
   bool floating = false;
 
-  bool zooming = false;
+  bool zoomingIn = false;
 
   @override
   FutureOr<void> onLoad() async {
@@ -52,12 +59,15 @@ class Player extends PositionComponent with HasGameRef {
       _onFloating(dt);
     }
 
-    if (zooming) {
+    if (zoomingIn) {
       game.camera.viewfinder.zoom =
           min(1.5, game.camera.viewfinder.zoom + 0.5 * dt);
-      (game as AquarriorsGame).parallaxBackground.scale =
-          Vector2.all(game.camera.viewfinder.zoom);
+      if (game.camera.viewfinder.zoom == 1.5) {
+        zoomingIn = false;
+      }
     }
+
+    _linkCameraMovementWithBackground(dt);
   }
 
   void _onSailing(double dt) {
@@ -84,15 +94,20 @@ class Player extends PositionComponent with HasGameRef {
   }
 
   void cast() {
+    final newScrappingHook = ScrappingHook();
+    scrappingHook = newScrappingHook;
+
     scrappingHook.casting = true;
     scrappingHook.hookDescending = false;
     scrappingHook.reeling = false;
 
-    zooming = true;
+    zoomingIn = true;
 
     character.current = CharacterState.casting;
     Future.delayed(const Duration(milliseconds: castingTime), () {
       add(scrappingHook);
+      game.overlays.remove("Casting Button");
+      game.overlays.add("Reeling Button");
       // game.camera.follow(scrappingHook);
     });
   }
@@ -101,5 +116,21 @@ class Player extends PositionComponent with HasGameRef {
     scrappingHook.casting = false;
     scrappingHook.hookDescending = false;
     scrappingHook.reeling = true;
+  }
+
+  void _linkCameraMovementWithBackground(double dt) {
+    final cameraPosition = game.camera.viewfinder.position;
+    final delta = dt > threshold ? 1.0 / (dt * framesPerSec) : 1.0;
+    final baseVelocity = cameraPosition
+      ..sub(lastCameraPosition)
+      ..multiply(backgroundVelocity)
+      ..multiply(Vector2(delta, delta));
+    (game as AquarriorsGame)
+        .parallaxBackground
+        .parallax!
+        .baseVelocity
+        .setFrom(baseVelocity);
+
+    lastCameraPosition.setFrom(game.camera.viewfinder.position);
   }
 }
