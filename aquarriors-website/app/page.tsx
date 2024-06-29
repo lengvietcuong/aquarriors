@@ -10,7 +10,7 @@ import GameSection from "@/components/game-section/GameSection";
 
 export default function Home() {
   return (
-    <main>
+    <main className="pb-16">
       <HeroSection />
       <ProblemsSection />
       <StatisticsSection />

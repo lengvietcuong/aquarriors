@@ -3,6 +3,7 @@ import { Montserrat, Lobster } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Aquarriors",
@@ -42,6 +43,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
