@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:aquarriors_game/trash/trapped_animal.dart';
-import 'package:aquarriors_game/trash/trash.dart';
+import 'package:aquarriors_game/entities/trapped_animal.dart';
+import 'package:aquarriors_game/entities/trash.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
