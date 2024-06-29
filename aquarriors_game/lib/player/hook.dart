@@ -43,6 +43,7 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
     final trashCollectionBox = Hive.box("trashCollection");
 
     int coinsCollected = 0;
+    int trashCollected = 0;
     for (final component in children) {
       if (component is Trash) {
         final trashCounter =
@@ -50,8 +51,9 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
         if (trashCounter == 0) {
           game.overlays.add("${component.name} Dialog");
         }
-        trashCollectionBox.put(component.name, trashCounter + 1);
 
+        trashCollectionBox.put(component.name, trashCounter + 1);
+        trashCollected++;
         coinsCollected += component.coins;
       } else if (component is TrappedSeaAnimal) {
         game.overlays.add("Rescue ${component.name} Dialog");
@@ -59,6 +61,10 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
         coinsCollected += component.coins;
       }
     }
+    final currentTotalTrashCollected = trashCollectionBox.get("total");
+    trashCollectionBox.put(
+        "total", currentTotalTrashCollected + trashCollected);
+
     final currentCoins = coinBox.get("coins", defaultValue: 0);
     coinBox.put("coins", currentCoins + coinsCollected);
   }

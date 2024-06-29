@@ -55,58 +55,80 @@ class TrashCollection extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: ListView(
-                  children: trashInfo
-                      .map((e) => Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 80,
-                                  width: 80,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.2),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(4)),
+                  children: [
+                    ...trashInfo
+                        .map((e) => Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 80,
+                                    width: 80,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black.withOpacity(0.2),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(4)),
+                                    ),
+                                    child: Image.asset(
+                                      "assets/images/Trash/${e.name}.png",
+                                      width: 60,
+                                      height: 60,
+                                    ),
                                   ),
-                                  child: Image.asset(
-                                    "assets/images/Trash/${e.name}.png",
-                                    width: 60,
-                                    height: 60,
-                                  ),
-                                ),
-                                const SizedBox(width: 20),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "${e.name} - ${e.recyclable ? "Recyclable" : "Non-Recyclable"}",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
+                                  const SizedBox(width: 20),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "${e.name} - ${e.recyclable ? "Recyclable" : "Non-Recyclable"}",
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        e.description,
-                                        style: const TextStyle(fontSize: 10),
-                                      ),
-                                    ],
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          e.description,
+                                          style: const TextStyle(fontSize: 10),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(width: 20),
-                                Container(
-                                  width: 120,
-                                  height: 50,
-                                  color: Colors.red,
-                                )
-                              ],
-                            ),
-                          ))
-                      .toList(),
+                                  const SizedBox(width: 20),
+                                  Container(
+                                    width: 140,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.2),
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(4),
+                                      ),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          Hive.box("trashCollection")
+                                              .get(e.name, defaultValue: 0)
+                                              .toString(),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        const Text("Collected"),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ))
+                        .toList(),
+                  ],
                 ),
               ),
             )
