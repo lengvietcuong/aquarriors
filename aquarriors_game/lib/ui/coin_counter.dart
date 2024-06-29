@@ -1,4 +1,4 @@
-import 'package:animated_digit/animated_digit.dart';
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:aquarriors_game/aquarriors_game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,79 +13,32 @@ class CoinCounter extends StatelessWidget {
     return Positioned(
       right: 40,
       top: 20,
-      child: Material(
-        color: Colors.transparent,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 20),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2),
-            borderRadius: const BorderRadius.all(Radius.circular(4)),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgPicture.asset("assets/images/UI/Coin.svg"),
-              const SizedBox(width: 20),
-              ValueListenableBuilder<Box>(
-                valueListenable:
-                    Hive.box("gameData").listenable(keys: ["coins"]),
-                builder: (context, box, widget) {
-                  return AnimatedDigitWidget(
-                    value: box.get("coins", defaultValue: 0),
-                    enableSeparator: true,
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                      // fontSize: 16,
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 20),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.2),
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset("assets/images/UI/Coin.svg"),
+            const SizedBox(width: 20),
+            ValueListenableBuilder<Box>(
+              valueListenable: Hive.box("gameData").listenable(),
+              builder: (context, box, widget) {
+                return AnimatedFlipCounter(
+                  value: box.get("coins", defaultValue: 0),
+                  textStyle: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold,
+                    // fontSize: 16,
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
-
-    // return Positioned(
-    //   right: 40,
-    //   top: 20,
-    //   child: Material(
-    //     color: Colors.transparent,
-    //     child: Container(
-    //       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 20),
-    //       decoration: BoxDecoration(
-    //         color: Colors.white.withOpacity(0.2),
-    //         borderRadius: const BorderRadius.all(Radius.circular(4)),
-    //       ),
-    //       child: Row(
-    //         mainAxisSize: MainAxisSize.min,
-    //         children: [
-    //           SvgPicture.asset("assets/images/UI/Coin.svg"),
-    //           const SizedBox(width: 20),
-    //           StreamBuilder(
-    //               stream: Hive.box("gameData").watch(key: "coins"),
-    //               builder: (context, snapshot) {
-    //                 if (snapshot.connectionState == ConnectionState.waiting) {
-    //                   return Text("");
-    //                 }
-
-    //                 if (snapshot.hasData) {
-    //                   print("hi");
-    //                   return AnimatedDigitWidget(
-    //                     value: snapshot.data!.value,
-    //                     enableSeparator: true,
-    //                     textStyle: const TextStyle(
-    //                       color: Colors.white,
-    //                       fontSize: 16,
-    //                     ),
-    //                   );
-    //                 }
-    //                 return Text("1");
-    //               })
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 }

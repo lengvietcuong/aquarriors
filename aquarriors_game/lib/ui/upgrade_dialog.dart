@@ -1,34 +1,22 @@
-import 'dart:math';
-
 import 'package:aquarriors_game/aquarriors_game.dart';
-import 'package:aquarriors_game/entities/sea_animal.dart';
-import 'package:aquarriors_game/worlds/ocean.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class RescueDialog extends StatelessWidget {
-  final String fishType;
+class UpgradeDialog extends StatelessWidget {
   final AquarriorsGame game;
-  const RescueDialog({super.key, required this.fishType, required this.game});
+  const UpgradeDialog({super.key, required this.game});
 
-  void _handleFreeFish() {
-    game.overlays.remove("Rescue $fishType Dialog");
-
-    return;
+  void _handleCancel() {
+    game.overlays.remove("Upgrade Dialog");
   }
 
-  void _handleKeepFishInAquarium() {
-    final box = Hive.box<List>("aquarium");
-    final fishTank = box.get("fishTank", defaultValue: []) ?? <SeaAnimal>[];
-    final newFish = SeaAnimal(
-      type: fishType,
-      displaySize: Random().nextDouble() * 50 + 50,
-      description: "",
-    );
-    box.put("fishTank", fishTank..add(newFish));
+  void _handleUpgrade() {
+    final box = Hive.box("gameData");
+    final currentCoins = box.get("coins");
+    box.put("coins", currentCoins - 765);
 
-    game.overlays.remove("Rescue $fishType Dialog");
-    // print(fishTank);
+    game.overlays.remove("Upgrade Dialog");
   }
 
   @override
@@ -36,7 +24,7 @@ class RescueDialog extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Container(
-        width: 400,
+        width: 340,
         height: 200,
         decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.5),
@@ -51,14 +39,15 @@ class RescueDialog extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.5),
               ),
-              child: Text(
-                "You rescued a $fishType!",
-                style: const TextStyle(color: Colors.white, fontSize: 16),
+              child: const Text(
+                "Upgrade Equipments",
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     width: 80,
@@ -69,19 +58,27 @@ class RescueDialog extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(4)),
                       color: Colors.white.withOpacity(0.2),
                     ),
+                    alignment: Alignment.center,
                     clipBehavior: Clip.hardEdge,
-                    child: Image.asset(
-                      "assets/images/Sea Animal/$fishType.png",
-                      // width: 100,
-                      // height: 100,
+                    child: SvgPicture.asset(
+                      "assets/images/UI/Hook.svg",
+                      width: 50,
+                      height: 50,
                     ),
                   ),
                   const SizedBox(width: 20),
-                  Expanded(
-                      child: Text(
-                    fishInfo[fishType]!.description,
-                    style: const TextStyle(fontSize: 12),
-                  ))
+                  const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Hook - Level 4"),
+                      SizedBox(height: 5),
+                      Text(
+                        "Length +5%",
+                        style: TextStyle(fontSize: 10),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -95,11 +92,11 @@ class RescueDialog extends StatelessWidget {
                 children: [
                   Expanded(
                     child: MaterialButton(
-                      onPressed: _handleKeepFishInAquarium,
+                      onPressed: _handleCancel,
                       elevation: 0,
                       color: Colors.blueGrey,
                       child: const Text(
-                        "Keep in Aquarium",
+                        "Cancel",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -110,11 +107,11 @@ class RescueDialog extends StatelessWidget {
                   const SizedBox(width: 10),
                   Expanded(
                     child: MaterialButton(
-                      onPressed: _handleFreeFish,
+                      onPressed: _handleUpgrade,
                       elevation: 0,
                       color: Colors.blue,
                       child: const Text(
-                        "Free",
+                        "Upgrade (765 Coins)",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 12,

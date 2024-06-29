@@ -15,7 +15,7 @@ class UpgradeButton extends StatelessWidget {
       child: SpriteButton(
         sprite: Sprite(Flame.images.fromCache("UI/Upgrade Button.png")),
         pressedSprite: Sprite(Flame.images.fromCache("UI/Upgrade Button.png")),
-        onPressed: () {},
+        onPressed: () => game.overlays.add("Upgrade Dialog"),
         width: 80,
         height: 80,
         label: const SizedBox.shrink(),

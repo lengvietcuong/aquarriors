@@ -10,6 +10,7 @@ import 'package:aquarriors_game/ui/fish_tank_panel.dart';
 import 'package:aquarriors_game/ui/reeling_button.dart';
 import 'package:aquarriors_game/ui/rescue_dialog.dart';
 import 'package:aquarriors_game/ui/upgrade_button.dart';
+import 'package:aquarriors_game/ui/upgrade_dialog.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -74,6 +75,9 @@ class MainApp extends StatelessWidget {
         },
         "Aquarium Back Button": (context, AquarriorsGame game) {
           return AquariumBackButton(game: game);
+        },
+        "Upgrade Dialog": (context, AquarriorsGame game) {
+          return UpgradeDialog(game: game);
         },
       },
     );
