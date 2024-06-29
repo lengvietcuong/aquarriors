@@ -51,7 +51,7 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
 
         coinsCollected += component.coins;
       } else if (component is TrappedAnimal) {
-        // game.overlays.add("Rescue ${component.name} Dialog");
+        game.overlays.add("Rescue ${component.name} Dialog");
 
         coinsCollected += component.coins;
       }

@@ -11,8 +11,8 @@ class AquariumButton extends StatelessWidget {
     return Positioned(
       bottom: 20,
       left: 100,
-      child: Material(
-        color: Colors.transparent,
+      child: GestureDetector(
+        onTap: game.switchToAquarium,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
