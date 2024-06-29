@@ -4,6 +4,7 @@ import StatisticsSection from "@/components/StatisticsSection";
 import WhyContributeSection from "@/components/WhyContributeSection";
 import DonateSection from "@/components/donate-section/DonateSection";
 import VolunteerSection from "@/components/volunteer-section/VolunteerSection";
+import SponsorsSection from "@/components/SponsorsSection";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <WhyContributeSection />
       <DonateSection />
       <VolunteerSection />
+      <SponsorsSection />
     </main>
   );
 }
