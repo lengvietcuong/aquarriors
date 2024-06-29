@@ -1,6 +1,8 @@
 import 'package:aquarriors_game/aquarriors_game.dart';
+import 'package:aquarriors_game/worlds/ocean.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class TrashCollection extends StatelessWidget {
   const TrashCollection({super.key, required this.game});
@@ -23,13 +25,15 @@ class TrashCollection extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Stack(
-              alignment: Alignment.center,
+              alignment: Alignment.centerRight,
               children: [
                 Container(
                   height: 32,
+                  width: double.infinity,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.5),
@@ -44,9 +48,68 @@ class TrashCollection extends StatelessWidget {
                   child: GestureDetector(
                       onTap: _handleClose,
                       child: SvgPicture.asset("assets/images/UI/Close.svg")),
-                )
+                ),
               ],
             ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: ListView(
+                  children: trashInfo
+                      .map((e) => Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 80,
+                                  width: 80,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.2),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(4)),
+                                  ),
+                                  child: Image.asset(
+                                    "assets/images/Trash/${e.name}.png",
+                                    width: 60,
+                                    height: 60,
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "${e.name} - ${e.recyclable ? "Recyclable" : "Non-Recyclable"}",
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 5),
+                                      Text(
+                                        e.description,
+                                        style: const TextStyle(fontSize: 10),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+                                Container(
+                                  width: 120,
+                                  height: 50,
+                                  color: Colors.red,
+                                )
+                              ],
+                            ),
+                          ))
+                      .toList(),
+                ),
+              ),
+            )
           ],
         ),
       ),
