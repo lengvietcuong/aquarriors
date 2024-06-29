@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:aquarriors_game/entities/trapped_animal.dart';
+import 'package:aquarriors_game/entities/trapped_sea_animal.dart';
 import 'package:aquarriors_game/entities/trash.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -27,7 +27,7 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
     super.onCollision(intersectionPoints, other);
     if (other is Trash) {
       other.handleCollisionWithHook(this);
-    } else if (other is TrappedAnimal) {
+    } else if (other is TrappedSeaAnimal) {
       other.handleCollisionWithHook(this);
     }
   }
@@ -50,7 +50,7 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
         box.put(component.name, trashCounter + 1);
 
         coinsCollected += component.coins;
-      } else if (component is TrappedAnimal) {
+      } else if (component is TrappedSeaAnimal) {
         game.overlays.add("Rescue ${component.name} Dialog");
 
         coinsCollected += component.coins;

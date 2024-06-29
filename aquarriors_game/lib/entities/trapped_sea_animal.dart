@@ -9,18 +9,16 @@ import 'package:flame/flame.dart';
 
 const floatVelocity = 10;
 
-class TrappedAnimal extends SpriteComponent
+class TrappedSeaAnimal extends SpriteComponent
     with HasGameRef, CollisionCallbacks {
-  TrappedAnimal({
+  TrappedSeaAnimal({
     required this.name,
     required this.displaySize,
-    required this.description,
     required this.coins,
   });
 
   final String name;
   final Vector2 displaySize;
-  final String description;
   final int coins;
 
   bool collected = false;
