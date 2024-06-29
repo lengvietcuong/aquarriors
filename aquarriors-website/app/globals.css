@@ -82,3 +82,17 @@
     @apply font-heading;
   }
 }
+
+@layer utilities {
+  .px-section {
+    @apply px-4 md:px-8 lg:px-36 max-w-screen-2xl mx-auto;
+  }
+
+  .py-section {
+    @apply py-10 md:py-12 lg:py-16;
+  }
+
+  .p-section {
+    @apply py-section px-section;
+  }
+}

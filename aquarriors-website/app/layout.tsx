@@ -35,9 +35,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${montserrat.variable} ${lobster.variable} ${sanfracisco.variable}`}
+        className={`${montserrat.variable} ${lobster.variable} ${sanfracisco.variable} min-h-screen`}
       >
         {children}
       </body>
