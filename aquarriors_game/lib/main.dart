@@ -1,6 +1,9 @@
 import 'package:aquarriors_game/aquarriors_game.dart';
+import 'package:aquarriors_game/ui/aquarium_button.dart';
 import 'package:aquarriors_game/ui/casting_button.dart';
+import 'package:aquarriors_game/ui/catalog_button.dart';
 import 'package:aquarriors_game/ui/reeling_button.dart';
+import 'package:aquarriors_game/ui/upgrade_button.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +26,16 @@ class MainApp extends StatelessWidget {
           },
           "Reeling Button": (context, AquarriorsGame game) {
             return ReelingButton(game: game);
-          }
+          },
+          "Upgrade Button": (context, AquarriorsGame game) {
+            return UpgradeButton(game: game);
+          },
+          "Catalog Button": (context, AquarriorsGame game) {
+            return CatalogButton(game: game);
+          },
+          "Aquarium Button": (context, AquarriorsGame game) {
+            return AquariumButton(game: game);
+          },
         },
       ),
     );

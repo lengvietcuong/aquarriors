@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:aquarriors_game/constants.dart';
 import 'package:aquarriors_game/player/player.dart';
-import 'package:aquarriors_game/scenes/parallax_background.dart';
 import 'package:aquarriors_game/scenes/water.dart';
 import 'package:aquarriors_game/worlds/aquarium.dart';
 import 'package:aquarriors_game/worlds/ocean.dart';
@@ -84,11 +83,6 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
       position: Vector2(0, size.y - waterLevel),
       anchor: Anchor.bottomLeft,
     );
-  }
-
-  @override
-  void update(double dt) {
-    super.update(dt);
   }
 
   Future<void> _loadAllImages() async {
