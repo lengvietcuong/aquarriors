@@ -3,19 +3,17 @@ import 'package:flame/flame.dart';
 import 'package:flame/widgets.dart';
 import 'package:flutter/widgets.dart';
 
-class CastingButton extends StatelessWidget {
-  const CastingButton({super.key, required this.game});
+class ReelingButton extends StatelessWidget {
+  const ReelingButton({super.key, required this.game});
   final AquarriorsGame game;
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 20,
-      right: 40,
       child: SpriteButton(
-        sprite: Sprite(Flame.images.fromCache("UI/Casting Button.png")),
-        pressedSprite: Sprite(Flame.images.fromCache("UI/Casting Button.png")),
-        onPressed: game.player.cast,
+        sprite: Sprite(Flame.images.fromCache("UI/Reeling Button.png")),
+        pressedSprite: Sprite(Flame.images.fromCache("UI/Reeling Button.png")),
+        onPressed: game.player.reel,
         width: 120,
         height: 120,
         label: const SizedBox.shrink(),

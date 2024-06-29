@@ -18,7 +18,7 @@ class ParallaxBackground extends ParallaxComponent {
         ParallaxImageData("Scenes/Land 3.png"),
       ],
       fill: LayerFill.none,
-      velocityMultiplierDelta: Vector2(2, 1),
+      velocityMultiplierDelta: Vector2(1.8, 1),
     );
 
     size = Vector2(5000, size.y);

@@ -31,6 +31,7 @@ class Character extends SpriteAnimationGroupComponent {
     castingAnimation = spritesheet.createAnimation(
       row: 0,
       stepTime: 0.1,
+      loop: false,
     );
     animations = {
       CharacterState.idle: idleAnimation,

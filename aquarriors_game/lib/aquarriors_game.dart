@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:aquarriors_game/constants.dart';
 import 'package:aquarriors_game/player/player.dart';
 import 'package:aquarriors_game/scenes/parallax_background.dart';
 import 'package:aquarriors_game/scenes/water.dart';
@@ -10,7 +9,6 @@ import 'package:aquarriors_game/worlds/ocean.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
-import 'package:flame/parallax.dart';
 
 class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
   final oceanWorld = Ocean();
@@ -44,8 +42,6 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
     if (info.eventPosition.global.x < size.x / 2) {
       player.backward = true;
     }
-
-    print("long press");
   }
 
   @override
@@ -54,8 +50,6 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
 
     player.sailing = false;
     player.floating = true;
-
-    print("long press end");
   }
 
   @override
@@ -64,6 +58,7 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
     switchToOcean();
 
     await _loadAllImages();
+
     camera.backdrop = parallaxBackground;
 
     world.add(player);
