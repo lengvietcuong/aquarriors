@@ -151,13 +151,14 @@ class Ocean extends World with HasGameRef {
     super.onMount();
 
     game.overlays.remove("Fish Tank Panel");
-    game.overlays.remove("Aquarium Actions Panel");
+    // game.overlays.remove("Aquarium Actions Panel");
     game.overlays.remove("Aquarium Back Button");
     game.overlays.add("Casting Button");
     game.overlays.add("Upgrade Button");
     game.overlays.add("Aquarium Button");
     game.overlays.add("Trash Collection Button");
     game.overlays.add("Coin Counter");
+    game.overlays.add("Daily Ads Button");
   }
 
   void _spawnTrash() {

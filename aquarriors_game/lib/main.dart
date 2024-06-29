@@ -4,6 +4,7 @@ import 'package:aquarriors_game/ui/aquarium_actions_panel.dart';
 import 'package:aquarriors_game/ui/aquarium_back_button.dart';
 import 'package:aquarriors_game/ui/aquarium_button.dart';
 import 'package:aquarriors_game/ui/casting_button.dart';
+import 'package:aquarriors_game/ui/daily_ads_button.dart';
 import 'package:aquarriors_game/ui/trash_collection.dart';
 import 'package:aquarriors_game/ui/trash_collection_button.dart';
 import 'package:aquarriors_game/ui/coin_counter.dart';
@@ -143,6 +144,9 @@ class MainApp extends StatelessWidget {
         },
         "Trash Collection": (context, AquarriorsGame game) {
           return TrashCollection(game: game);
+        },
+        "Daily Ads Button": (context, AquarriorsGame game) {
+          return DailyAdsButton(game: game);
         }
       },
     );
