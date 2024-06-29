@@ -73,26 +73,10 @@ class FishTankPanel extends StatelessWidget {
                                 "assets/images/Sea Animal/${e.type}.png",
                               ),
                               Align(
-                                alignment: Alignment.topCenter,
-                                child: Container(
-                                  margin: const EdgeInsets.all(4),
-                                  width: double.infinity,
-                                  alignment: Alignment.centerLeft,
-                                  height: 3,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.2),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(3)),
-                                  ),
-                                  child: Container(
-                                    width: 30,
-                                    height: 3,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.yellow,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(3)),
-                                    ),
-                                  ),
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  e.customName ?? "",
+                                  style: const TextStyle(fontSize: 8),
                                 ),
                               )
                             ],

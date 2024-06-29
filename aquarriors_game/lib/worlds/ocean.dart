@@ -112,24 +112,28 @@ final trappedFishInfo = [
 ];
 final fishInfo = {
   "Turtle": SeaAnimal(
+    customName: "",
     type: "Turtle",
     displaySize: 100,
     description:
         "Turtles are long-lived reptiles, vital for marine ecosystems. Sadly, they are often threatened by pollution, particularly plastic waste, which they can mistake for food.",
   ),
   "Clown Fish": SeaAnimal(
+    customName: "",
     type: "Clown Fish",
     displaySize: 100,
     description:
         "Clownfish are vibrant, reef-dwelling fish known for their symbiotic relationship with sea anemones, providing mutual protection and benefiting from their stinging tentacles.",
   ),
   "Blue Tang": SeaAnimal(
+    customName: "",
     type: "Blue Tang",
     displaySize: 100,
     description:
         'Blue tangs are vibrant, blue and yellow reef fish known for their role in algae control and their popularity as "Dory" from the movie "Finding Nemo."',
   ),
   "Angel Fish": SeaAnimal(
+    customName: "",
     type: "Angel Fish",
     displaySize: 100,
     description:

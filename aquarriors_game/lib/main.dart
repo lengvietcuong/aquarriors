@@ -5,6 +5,7 @@ import 'package:aquarriors_game/ui/aquarium_back_button.dart';
 import 'package:aquarriors_game/ui/aquarium_button.dart';
 import 'package:aquarriors_game/ui/casting_button.dart';
 import 'package:aquarriors_game/ui/daily_ads_button.dart';
+import 'package:aquarriors_game/ui/name_fish_dialog.dart';
 import 'package:aquarriors_game/ui/new_slot_dialog.dart';
 import 'package:aquarriors_game/ui/trash_collection.dart';
 import 'package:aquarriors_game/ui/trash_collection_button.dart';
@@ -151,6 +152,30 @@ class MainApp extends StatelessWidget {
         },
         "New Slot Dialog": (context, AquarriorsGame game) {
           return NewSlotDialog(game: game);
+        },
+        "Name Turtle Dialog": (context, AquarriorsGame game) {
+          return NameFishDialog(
+            game: game,
+            fishType: "Turtle",
+          );
+        },
+        "Name Clown Fish Dialog": (context, AquarriorsGame game) {
+          return NameFishDialog(
+            game: game,
+            fishType: "Clown Fish",
+          );
+        },
+        "Name Blue Tang Dialog": (context, AquarriorsGame game) {
+          return NameFishDialog(
+            game: game,
+            fishType: "Blue Tang",
+          );
+        },
+        "Name Angel Fish Dialog": (context, AquarriorsGame game) {
+          return NameFishDialog(
+            game: game,
+            fishType: "Angel Fish",
+          );
         },
       },
     );

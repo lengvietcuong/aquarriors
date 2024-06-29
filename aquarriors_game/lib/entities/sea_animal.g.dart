@@ -20,19 +20,22 @@ class SeaAnimalAdapter extends TypeAdapter<SeaAnimal> {
       type: fields[0] as String,
       displaySize: fields[1] as double,
       description: fields[2] as String,
+      customName: fields[3] ?? "",
     );
   }
 
   @override
   void write(BinaryWriter writer, SeaAnimal obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.type)
       ..writeByte(1)
       ..write(obj.displaySize)
       ..writeByte(2)
-      ..write(obj.description);
+      ..write(obj.description)
+      ..writeByte(3)
+      ..write(obj.customName);
   }
 
   @override

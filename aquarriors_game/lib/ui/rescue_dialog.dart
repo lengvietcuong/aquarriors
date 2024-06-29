@@ -1,10 +1,6 @@
-import 'dart:math';
-
 import 'package:aquarriors_game/aquarriors_game.dart';
-import 'package:aquarriors_game/entities/sea_animal.dart';
 import 'package:aquarriors_game/worlds/ocean.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class RescueDialog extends StatelessWidget {
   final String fishType;
@@ -18,16 +14,17 @@ class RescueDialog extends StatelessWidget {
   }
 
   void _handleKeepFishInAquarium() {
-    final box = Hive.box<List>("aquarium");
-    final fishTank = box.get("fishTank", defaultValue: []) ?? <SeaAnimal>[];
-    final newFish = SeaAnimal(
-      type: fishType,
-      displaySize: Random().nextDouble() * 50 + 50,
-      description: "",
-    );
-    box.put("fishTank", fishTank..add(newFish));
+    // final box = Hive.box<List>("aquarium");
+    // final fishTank = box.get("fishTank", defaultValue: []) ?? <SeaAnimal>[];
+    // final newFish = SeaAnimal(
+    //   type: fishType,
+    //   displaySize: Random().nextDouble() * 50 + 50,
+    //   description: "",
+    // );
+    // box.put("fishTank", fishTank..add(newFish));
 
     game.overlays.remove("Rescue $fishType Dialog");
+    game.overlays.add("Name $fishType Dialog");
     // print(fishTank);
   }
 

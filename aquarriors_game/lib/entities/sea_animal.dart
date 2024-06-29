@@ -17,6 +17,7 @@ class SeaAnimal extends SpriteComponent with HasGameRef, CollisionCallbacks {
     required this.type,
     required this.displaySize,
     required this.description,
+    required this.customName,
   });
 
   @HiveField(0)
@@ -25,6 +26,8 @@ class SeaAnimal extends SpriteComponent with HasGameRef, CollisionCallbacks {
   final double displaySize;
   @HiveField(2)
   final String description;
+  @HiveField(3)
+  final String customName;
 
   bool movingRight = false;
   bool movingDown = false;
