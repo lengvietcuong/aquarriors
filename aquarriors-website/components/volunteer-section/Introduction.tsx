@@ -3,7 +3,7 @@ import volunteers from "@/public/volunteers.jpg";
 
 function Introduction() {
   return (
-    <div className="items-center lg:items-start md:mt-8 mt-6 lg:mt-16 flex-col lg:flex-row flex justify-center gap-8 md:gap-10 lg:gap-16">
+    <div className="items-center lg:items-start md:mt-8 mt-6 lg:mt-16 flex-col lg:flex-row flex justify-center gap-8 md:gap-10 lg:gap-12">
       <div className="max-w-screen-sm">
         <Image
           src={volunteers}
