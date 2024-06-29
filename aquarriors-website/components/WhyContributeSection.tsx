@@ -4,7 +4,7 @@ import { RiFlowerFill as FlowerIcon } from "react-icons/ri";
 
 function WhyContributeSection() {
   return (
-    <section className="mt-16 relative overflow-hidden">
+    <section className="mt-8 relative overflow-hidden">
       <div className="absolute left-1/2 -translate-y-1/2 -translate-x-1/2 top-0 -z-10 h-1/3 w-[200%] lg:h-full lg:w-[100%] bg-[radial-gradient(farthest-side,rgba(56,189,248,0.5),rgba(59,130,246,0.15),rgba(0,0,0,0))] block"></div>
       <div className="p-section">
         <h2 className="mt-8 font-bold text-center text-3xl md:text-4xl lg:text-5xl">
