@@ -1,4 +1,5 @@
 import GoalCounter from "./GoalCounter";
+import ProgressBar from "./ProgessBar";
 
 function HeroSection() {
   return (
@@ -8,6 +9,13 @@ function HeroSection() {
         HCMC's farewell to water pollution
       </h1>
       <GoalCounter />
+      <p className="md:mt-3 mt-2 mb-4 text-muted-foreground text-center md:text-xl lg:text-2xl">
+        Kilograms of trash to be removed
+      </p>
+      <div className="mx-auto lg:max-w-sm md:max-w-96 max-w-60">
+        <ProgressBar />
+        <p className="mt-1 text-muted-foreground">42% done</p>
+      </div>
     </section>
   );
 }

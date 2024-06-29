@@ -77,6 +77,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      transitionDuration: {
+        '1500': '1.5s',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
