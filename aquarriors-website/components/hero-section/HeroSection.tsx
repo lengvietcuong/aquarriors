@@ -1,6 +1,7 @@
 import GoalCounter from "./GoalCounter";
 import ProgressBar from "./ProgessBar";
 import CTAButtons from "./CTAButtons";
+import BeforeAfter from "./BeforeAfter";
 
 function HeroSection() {
   return (
@@ -21,6 +22,7 @@ function HeroSection() {
         Be the hero your community needs.
       </h2>
       <CTAButtons />
+      <BeforeAfter />
     </section>
   );
 }

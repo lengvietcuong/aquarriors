@@ -68,6 +68,10 @@
 }
 
 @layer utilities {
+  .link {
+    @apply text-primary saturate-50 hover:underline underline-offset-4 hover:saturate-100;
+  }
+
   .px-section {
     @apply px-4 md:px-8 lg:px-36 max-w-screen-2xl mx-auto;
   }
