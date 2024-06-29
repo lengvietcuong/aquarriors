@@ -28,7 +28,7 @@ class FishTankPanel extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(4)),
               clipBehavior: Clip.hardEdge,
               child: InkWell(
-                onTap: () {},
+                onTap: () => game.overlays.add("New Slot Dialog"),
                 child: SizedBox(
                   width: 100,
                   height: 60,

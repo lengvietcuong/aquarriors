@@ -9,21 +9,21 @@ class DailyAdsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 60,
-      right: 40,
+      top: 20,
+      right: 160,
       child: GestureDetector(
-        onTap: game.switchToAquarium,
+        onTap: () {},
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset(
               "assets/images/UI/Present.svg",
-              width: 36,
-              height: 36,
+              width: 32,
+              height: 32,
             ),
             const SizedBox(height: 2),
             const Text(
-              "Daily Reward (Ads)",
+              "Daily (Ads)",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 10,

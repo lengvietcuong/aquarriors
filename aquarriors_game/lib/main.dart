@@ -5,6 +5,7 @@ import 'package:aquarriors_game/ui/aquarium_back_button.dart';
 import 'package:aquarriors_game/ui/aquarium_button.dart';
 import 'package:aquarriors_game/ui/casting_button.dart';
 import 'package:aquarriors_game/ui/daily_ads_button.dart';
+import 'package:aquarriors_game/ui/new_slot_dialog.dart';
 import 'package:aquarriors_game/ui/trash_collection.dart';
 import 'package:aquarriors_game/ui/trash_collection_button.dart';
 import 'package:aquarriors_game/ui/coin_counter.dart';
@@ -147,7 +148,10 @@ class MainApp extends StatelessWidget {
         },
         "Daily Ads Button": (context, AquarriorsGame game) {
           return DailyAdsButton(game: game);
-        }
+        },
+        "New Slot Dialog": (context, AquarriorsGame game) {
+          return NewSlotDialog(game: game);
+        },
       },
     );
   }
