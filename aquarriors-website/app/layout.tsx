@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${montserrat.variable} ${lobster.variable} ${sanfracisco.variable} min-h-screen`}
+        className={`${montserrat.variable} ${lobster.variable} ${sanfracisco.variable} font-body min-h-screen`}
       >
         <Header />
         {children}
