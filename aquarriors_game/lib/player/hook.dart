@@ -61,7 +61,8 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
         coinsCollected += component.coins;
       }
     }
-    final currentTotalTrashCollected = trashCollectionBox.get("total");
+    final currentTotalTrashCollected =
+        trashCollectionBox.get("total", defaultValue: 0);
     trashCollectionBox.put(
         "total", currentTotalTrashCollected + trashCollected);
 
