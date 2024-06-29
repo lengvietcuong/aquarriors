@@ -74,6 +74,7 @@ class Player extends PositionComponent with HasGameRef {
     if (zoomingIn) {
       game.camera.viewfinder.zoom =
           min(1.5, game.camera.viewfinder.zoom + 0.5 * dt);
+
       if (game.camera.viewfinder.zoom.toStringAsFixed(1) == "1.5") {
         zoomingIn = false;
       }
@@ -82,6 +83,10 @@ class Player extends PositionComponent with HasGameRef {
     if (zoomingOut) {
       game.camera.viewfinder.zoom =
           max(1.0, game.camera.viewfinder.zoom - 0.5 * dt);
+
+      if (game.camera.viewfinder.zoom.toStringAsFixed(1) == "1.0") {
+        zoomingOut = false;
+      }
     }
 
     _linkCameraMovementWithBackground(dt);
@@ -118,15 +123,14 @@ class Player extends PositionComponent with HasGameRef {
     scrappingHook.hookDescending = false;
     scrappingHook.reeling = false;
 
-    game.camera.viewfinder.zoom = 1.0;
     zoomingIn = true;
 
     character.current = CharacterState.casting;
     Future.delayed(const Duration(milliseconds: castingTime), () {
+      add(scrappingHook);
       game.camera.follow(scrappingHook.hook);
       game.camera.viewfinder.anchor =
           Anchor(-(absolutePosition.x / game.size.x), -0.4);
-      add(scrappingHook);
 
       game.overlays.remove("Casting Button");
       game.overlays.add("Reeling Button");
@@ -144,10 +148,13 @@ class Player extends PositionComponent with HasGameRef {
 
       zoomingOut = true;
 
-      game.camera.follow(parent as Player);
-      game.camera.viewfinder.anchor =
-          Anchor(playerOffsetX / size.x, (size.y - playerOffsetY) / size.y);
-      removeFromParent();
+      remove(scrappingHook);
+      game.camera.follow(this);
+      game.camera.viewfinder.anchor = Anchor(playerOffsetX / game.size.x,
+          (game.size.y - playerOffsetY) / game.size.y);
+
+      game.overlays.remove("Reeling Button");
+      game.overlays.add("Casting Button");
     });
   }
 
