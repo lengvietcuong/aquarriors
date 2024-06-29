@@ -1,3 +1,5 @@
+import 'package:aquarriors_game/aquarriors_game.dart';
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +11,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: GameWidget(game: AquarriorsGame()),
     );
   }
 }
