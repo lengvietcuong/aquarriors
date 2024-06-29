@@ -21,7 +21,7 @@ class Aquarium extends World with HasGameRef {
     game.overlays.remove("Casting Button");
     game.overlays.remove("Upgrade Button");
     game.overlays.remove("Aquarium Button");
-    game.overlays.remove("Catalog Button");
+    game.overlays.remove("Trash Collection Button");
     game.overlays.add("Fish Tank Panel");
     game.overlays.add("Aquarium Actions Panel");
     game.overlays.add("Aquarium Back Button");

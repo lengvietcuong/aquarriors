@@ -2,14 +2,11 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:aquarriors_game/aquarriors_game.dart';
-import 'package:aquarriors_game/entities/trapped_sea_animal.dart';
-import 'package:aquarriors_game/entities/trash.dart';
 import 'package:aquarriors_game/player/boat.dart';
 import 'package:aquarriors_game/player/character.dart';
 import 'package:aquarriors_game/player/scrapping_hook.dart';
 import 'package:aquarriors_game/player/water_splash.dart';
 import 'package:flame/components.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 const double playerOffsetY = 130;
 const double playerOffsetX = 100;
@@ -152,7 +149,6 @@ class Player extends PositionComponent with HasGameRef {
       zoomingOut = true;
 
       remove(scrappingHook);
-      _handleCollectedTrash();
 
       game.camera.follow(this);
       game.camera.viewfinder.anchor = Anchor(playerOffsetX / game.size.x,
@@ -161,28 +157,6 @@ class Player extends PositionComponent with HasGameRef {
       game.overlays.remove("Reeling Button");
       game.overlays.add("Casting Button");
     });
-  }
-
-  void _handleCollectedTrash() {
-    final coinBox = Hive.box("gameData");
-    final catalogBox = Hive.box("catalog");
-
-    int coinsCollected = 0;
-    for (final component in scrappingHook.hook.children) {
-      if (component is Trash) {
-        final trashCounter = catalogBox.get(component.name, defaultValue: 0);
-        catalogBox.put(component.name, trashCounter + 1);
-
-        coinsCollected += component.coins;
-      } else if (component is TrappedSeaAnimal) {
-        game.overlays.add("Rescue ${component.name} Dialog");
-
-        coinsCollected += component.coins;
-      }
-    }
-    final currentCoins = coinBox.get("coins", defaultValue: 0);
-    coinBox.put("coins", currentCoins + coinsCollected);
-    coinBox.add("this value is added for the listener to update");
   }
 
   void _linkCameraMovementWithBackground(double dt) {

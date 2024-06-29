@@ -10,7 +10,7 @@ class AquariumButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 20,
-      left: 100,
+      left: 140,
       child: GestureDetector(
         onTap: game.switchToAquarium,
         child: Column(

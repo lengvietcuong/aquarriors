@@ -4,11 +4,13 @@ import 'package:aquarriors_game/ui/aquarium_actions_panel.dart';
 import 'package:aquarriors_game/ui/aquarium_back_button.dart';
 import 'package:aquarriors_game/ui/aquarium_button.dart';
 import 'package:aquarriors_game/ui/casting_button.dart';
-import 'package:aquarriors_game/ui/catalog_button.dart';
+import 'package:aquarriors_game/ui/trash_collection.dart';
+import 'package:aquarriors_game/ui/trash_collection_button.dart';
 import 'package:aquarriors_game/ui/coin_counter.dart';
 import 'package:aquarriors_game/ui/fish_tank_panel.dart';
 import 'package:aquarriors_game/ui/reeling_button.dart';
 import 'package:aquarriors_game/ui/rescue_dialog.dart';
+import 'package:aquarriors_game/ui/trash_info_dialpg.dart';
 import 'package:aquarriors_game/ui/upgrade_button.dart';
 import 'package:aquarriors_game/ui/upgrade_dialog.dart';
 import 'package:flame/game.dart';
@@ -22,7 +24,7 @@ Future<void> main() async {
   Hive.registerAdapter(SeaAnimalAdapter());
 
   await Hive.openBox("gameData");
-  await Hive.openBox("catalog");
+  await Hive.openBox("trashCollection");
   await Hive.openBox<List>("aquarium");
   // await Hive.deleteFromDisk();
 
@@ -46,8 +48,8 @@ class MainApp extends StatelessWidget {
         "Upgrade Button": (context, AquarriorsGame game) {
           return UpgradeButton(game: game);
         },
-        "Catalog Button": (context, AquarriorsGame game) {
-          return CatalogButton(game: game);
+        "Trash Collection Button": (context, AquarriorsGame game) {
+          return TrashCollectionButton(game: game);
         },
         "Aquarium Button": (context, AquarriorsGame game) {
           return AquariumButton(game: game);
@@ -79,6 +81,69 @@ class MainApp extends StatelessWidget {
         "Upgrade Dialog": (context, AquarriorsGame game) {
           return UpgradeDialog(game: game);
         },
+        "Aluminum Can Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Aluminum Can",
+          );
+        },
+        "Broken Glass Bottle Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Broken Glass Bottle",
+          );
+        },
+        "Broken Phone Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Broken Phone",
+          );
+        },
+        "Broken Vase Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Broken Vase",
+          );
+        },
+        "Carton Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Carton",
+          );
+        },
+        "Food Waste Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Food Waste",
+          );
+        },
+        "Light Bulb Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Light Bulb",
+          );
+        },
+        "Plastic Bag Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Plastic Bag",
+          );
+        },
+        "Plastic Bottle Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Plastic Bottle",
+          );
+        },
+        "Styrofoam Dialog": (context, AquarriorsGame game) {
+          return TrashInfoDialog(
+            game: game,
+            trashName: "Styrofoam",
+          );
+        },
+        "Trash Collection": (context, AquarriorsGame game) {
+          return TrashCollection(game: game);
+        }
       },
     );
   }

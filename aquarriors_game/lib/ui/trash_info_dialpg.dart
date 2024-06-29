@@ -1,34 +1,23 @@
-import 'dart:math';
-
 import 'package:aquarriors_game/aquarriors_game.dart';
-import 'package:aquarriors_game/entities/sea_animal.dart';
 import 'package:aquarriors_game/worlds/ocean.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
-class RescueDialog extends StatelessWidget {
-  final String fishType;
+class TrashInfoDialog extends StatelessWidget {
   final AquarriorsGame game;
-  const RescueDialog({super.key, required this.fishType, required this.game});
+  const TrashInfoDialog({
+    super.key,
+    required this.game,
+    required this.trashName,
+  });
 
-  void _handleFreeFish() {
-    game.overlays.remove("Rescue $fishType Dialog");
+  final String trashName;
 
-    return;
+  void _handleOK() {
+    game.overlays.remove("$trashName Dialog");
   }
 
-  void _handleKeepFishInAquarium() {
-    final box = Hive.box<List>("aquarium");
-    final fishTank = box.get("fishTank", defaultValue: []) ?? <SeaAnimal>[];
-    final newFish = SeaAnimal(
-      type: fishType,
-      displaySize: Random().nextDouble() * 50 + 50,
-      description: "",
-    );
-    box.put("fishTank", fishTank..add(newFish));
-
-    game.overlays.remove("Rescue $fishType Dialog");
-    // print(fishTank);
+  void _handleOpenTrashCollection() {
+    game.overlays.remove("$trashName Dialog");
   }
 
   @override
@@ -52,7 +41,7 @@ class RescueDialog extends StatelessWidget {
                 color: Colors.black.withOpacity(0.5),
               ),
               child: Text(
-                "You rescued a $fishType!",
+                "You collected a $trashName",
                 style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
@@ -69,17 +58,20 @@ class RescueDialog extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(4)),
                       color: Colors.white.withOpacity(0.2),
                     ),
+                    alignment: Alignment.center,
                     clipBehavior: Clip.hardEdge,
                     child: Image.asset(
-                      "assets/images/Sea Animal/$fishType.png",
-                      // width: 100,
-                      // height: 100,
+                      "assets/images/Trash/$trashName.png",
+                      width: 60,
+                      height: 60,
                     ),
                   ),
                   const SizedBox(width: 20),
                   Expanded(
                       child: Text(
-                    fishInfo[fishType]!.description,
+                    trashInfo
+                        .firstWhere((t) => t.name == trashName)
+                        .description,
                     style: const TextStyle(fontSize: 12),
                   ))
                 ],
@@ -95,11 +87,11 @@ class RescueDialog extends StatelessWidget {
                 children: [
                   Expanded(
                     child: MaterialButton(
-                      onPressed: _handleKeepFishInAquarium,
+                      onPressed: _handleOK,
                       elevation: 0,
                       color: Colors.blueGrey,
                       child: const Text(
-                        "Keep in Aquarium",
+                        "OK",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -110,11 +102,11 @@ class RescueDialog extends StatelessWidget {
                   const SizedBox(width: 10),
                   Expanded(
                     child: MaterialButton(
-                      onPressed: _handleFreeFish,
+                      onPressed: _handleOpenTrashCollection,
                       elevation: 0,
                       color: Colors.blue,
                       child: const Text(
-                        "Free",
+                        "View Collection",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 12,

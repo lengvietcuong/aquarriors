@@ -156,7 +156,7 @@ class Ocean extends World with HasGameRef {
     game.overlays.add("Casting Button");
     game.overlays.add("Upgrade Button");
     game.overlays.add("Aquarium Button");
-    game.overlays.add("Catalog Button");
+    game.overlays.add("Trash Collection Button");
     game.overlays.add("Coin Counter");
   }
 

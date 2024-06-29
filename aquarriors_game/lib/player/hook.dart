@@ -5,6 +5,7 @@ import 'package:aquarriors_game/entities/trash.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
   late RectangleHitbox hitbox;
@@ -29,5 +30,36 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
     } else if (other is TrappedSeaAnimal) {
       other.handleCollisionWithHook(this);
     }
+  }
+
+  @override
+  void onRemove() {
+    super.onRemove();
+    _handleCollectedTrash();
+  }
+
+  void _handleCollectedTrash() {
+    final coinBox = Hive.box("gameData");
+    final trashCollectionBox = Hive.box("trashCollection");
+
+    int coinsCollected = 0;
+    for (final component in children) {
+      if (component is Trash) {
+        final trashCounter =
+            trashCollectionBox.get(component.name, defaultValue: 0);
+        if (trashCounter == 0) {
+          game.overlays.add("${component.name} Dialog");
+        }
+        trashCollectionBox.put(component.name, trashCounter + 1);
+
+        coinsCollected += component.coins;
+      } else if (component is TrappedSeaAnimal) {
+        game.overlays.add("Rescue ${component.name} Dialog");
+
+        coinsCollected += component.coins;
+      }
+    }
+    final currentCoins = coinBox.get("coins", defaultValue: 0);
+    coinBox.put("coins", currentCoins + coinsCollected);
   }
 }
