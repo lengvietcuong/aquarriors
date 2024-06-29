@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:aquarriors_game/constants.dart';
 import 'package:aquarriors_game/player/player.dart';
+import 'package:aquarriors_game/scenes/parallax_background.dart';
 import 'package:aquarriors_game/scenes/water.dart';
 import 'package:aquarriors_game/worlds/aquarium.dart';
 import 'package:aquarriors_game/worlds/ocean.dart';
@@ -16,8 +17,7 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
   final aquariumWorld = Aquarium();
   final water = Water();
   final player = Player();
-
-  late final ParallaxComponent parallaxBackground;
+  final parallaxBackground = ParallaxBackground();
 
   @override
   Color backgroundColor() => const Color(0xFFE3E0D0);
@@ -25,7 +25,9 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
   void switchToOcean() {
     world = oceanWorld;
     camera = CameraComponent.withFixedResolution(width: size.x, height: size.y);
-    camera.viewfinder.anchor = Anchor.topLeft;
+    camera.follow(player);
+    camera.viewfinder.anchor =
+        Anchor(playerOffsetX / size.x, (size.y - playerOffsetY) / size.y);
   }
 
   void switchToAquarium() {
@@ -62,8 +64,8 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
     switchToOcean();
 
     await _loadAllImages();
-    await _loadParallaxBackground();
-    world.add(parallaxBackground);
+    camera.backdrop = parallaxBackground;
+
     world.add(player);
     world.add(water);
   }
@@ -109,20 +111,5 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
       "UI/Reeling Button.png",
       "UI/Upgrade Button.png",
     ]);
-  }
-
-  Future<void> _loadParallaxBackground() async {
-    parallaxBackground = await loadParallaxComponent(
-      [
-        ParallaxImageData("Scenes/Ocean Background.png"),
-        ParallaxImageData("Scenes/Land 1.png"),
-        ParallaxImageData("Scenes/Land 2.png"),
-        ParallaxImageData("Scenes/Land 3.png"),
-      ],
-      size: Vector2(5000, size.y),
-      fill: LayerFill.none,
-      position: Vector2(0, size.y - waterLevel),
-      anchor: Anchor.bottomLeft,
-    );
   }
 }
