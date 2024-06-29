@@ -20,7 +20,7 @@ function StatisticsSection() {
             href="https://vietnamnet.vn/en/saigon-river-threatened-by-plastic-waste-594490.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="link text-xs opacity-50 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
+            className="link text-xs opacity-75 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
           >
             Source
           </a>
@@ -40,7 +40,7 @@ function StatisticsSection() {
             href="https://www.scitepress.org/Papers/2021/105853/105853.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="link text-xs opacity-50 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
+            className="link text-xs opacity-75 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
           >
             Source
           </a>
@@ -61,7 +61,7 @@ function StatisticsSection() {
             href="https://www.sciencedirect.com/science/article/pii/S266601642400094X"
             target="_blank"
             rel="noopener noreferrer"
-            className="link text-xs opacity-50 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
+            className="link text-xs opacity-75 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
           >
             Source
           </a>
@@ -79,7 +79,7 @@ function StatisticsSection() {
             href="https://www.scitepress.org/Papers/2021/105853/105853.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="link text-xs opacity-50 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
+            className="link text-xs opacity-75 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
           >
             Source
           </a>
@@ -97,7 +97,7 @@ function StatisticsSection() {
             href="https://www.scitepress.org/Papers/2021/105853/105853.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="link text-xs opacity-50 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
+            className="link text-xs opacity-75 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
           >
             Source
           </a>
@@ -115,7 +115,7 @@ function StatisticsSection() {
             href="https://www.scitepress.org/Papers/2021/105853/105853.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="link text-xs opacity-50 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
+            className="link text-xs opacity-75 transition-opacity hover:opacity-100 block text-right mt-3 absolute bottom-2 right-2 lg:bottom-4 lg:right-4"
           >
             Source
           </a>
