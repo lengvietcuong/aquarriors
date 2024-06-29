@@ -11,7 +11,8 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 
-class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
+class AquarriorsGame extends FlameGame
+    with TapDetector, LongPressDetector, HasCollisionDetection {
   final oceanWorld = Ocean();
   final aquariumWorld = Aquarium();
   final water = Water();
@@ -59,9 +60,8 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
   @override
   Future<void> onLoad() async {
     super.onLoad();
-    switchToOcean();
-
     await _loadAllImages();
+    switchToOcean();
 
     // camera.backdrop = parallaxBackground;
     await _loadParallaxBackground();
