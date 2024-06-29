@@ -40,9 +40,11 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
   void onLongPressStart(LongPressStartInfo info) {
     super.onLongPressStart(info);
 
+    player.add(player.waterSplash);
     player.sailing = true;
     if (info.eventPosition.global.x < size.x / 2) {
       player.backward = true;
+      player.waterSplash.flipHorizontallyAroundCenter();
     }
   }
 

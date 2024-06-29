@@ -5,14 +5,15 @@ import 'package:aquarriors_game/aquarriors_game.dart';
 import 'package:aquarriors_game/player/boat.dart';
 import 'package:aquarriors_game/player/character.dart';
 import 'package:aquarriors_game/player/scrapping_hook.dart';
+import 'package:aquarriors_game/player/water_splash.dart';
 import 'package:flame/components.dart';
 
 const double playerOffsetY = 130;
 const double playerOffsetX = 100;
 
 const double waterAcceleration = -200;
-const double boatAcceleration = 100;
-const double boatMaxSpeed = 200;
+const double boatAcceleration = 50;
+const double boatMaxSpeed = 100;
 
 const int castingTime = 800;
 const double extraZoom = 0.5;
@@ -27,6 +28,8 @@ class Player extends PositionComponent with HasGameRef {
 
   final character = Character();
   final boat = Boat();
+  final waterSplash = WaterSplash();
+
   late ScrappingHook scrappingHook;
 
   double velocity = 0;
@@ -58,6 +61,14 @@ class Player extends PositionComponent with HasGameRef {
     if (floating) {
       _onFloating(dt);
     }
+    if (!sailing && !floating && waterSplash.isMounted) {
+      remove(waterSplash);
+    }
+
+    position = Vector2(
+      max(playerOffsetX, position.x),
+      position.y,
+    );
 
     if (zoomingIn) {
       game.camera.viewfinder.zoom =
