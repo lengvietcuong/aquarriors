@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:aquarriors_game/aquarriors_game.dart';
 import 'package:aquarriors_game/entities/sea_animal.dart';
+import 'package:aquarriors_game/worlds/ocean.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -35,7 +36,7 @@ class RescueDialog extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Container(
-        width: 320,
+        width: 400,
         height: 200,
         decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.5),
@@ -55,18 +56,33 @@ class RescueDialog extends StatelessWidget {
                 style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                border:
-                    Border.all(color: Colors.white.withOpacity(0.5), width: 2),
-                borderRadius: const BorderRadius.all(Radius.circular(4)),
-                color: Colors.white.withOpacity(0.2),
-              ),
-              clipBehavior: Clip.hardEdge,
-              child: Image.asset(
-                "assets/images/Sea Animal/$fishType.png",
-                width: 80,
-                height: 80,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.white.withOpacity(0.5), width: 2),
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
+                      color: Colors.white.withOpacity(0.2),
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                    child: Image.asset(
+                      "assets/images/Sea Animal/$fishType.png",
+                      // width: 100,
+                      // height: 100,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                      child: Text(
+                    fishInfo[fishType]!.description,
+                    style: const TextStyle(fontSize: 12),
+                  ))
+                ],
               ),
             ),
             Container(

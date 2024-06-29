@@ -21,6 +21,7 @@ Future<void> main() async {
   Hive.registerAdapter(SeaAnimalAdapter());
 
   await Hive.openBox("gameData");
+  await Hive.openBox("catalog");
   await Hive.openBox<List>("aquarium");
   // await Hive.deleteFromDisk();
 

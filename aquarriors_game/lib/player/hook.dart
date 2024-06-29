@@ -40,14 +40,15 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
   }
 
   void _handleCollectedTrash() {
-    final box = Hive.box("gameData");
-    final currentCoins = box.get("coins", defaultValue: 0);
+    final coinBox = Hive.box("gameData");
+    final catalogBox = Hive.box("catalog");
+    final currentCoins = coinBox.get("coins", defaultValue: 0);
 
     int coinsCollected = 0;
     for (final component in children) {
       if (component is Trash) {
-        final trashCounter = box.get(component.name, defaultValue: 0);
-        box.put(component.name, trashCounter + 1);
+        final trashCounter = catalogBox.get(component.name, defaultValue: 0);
+        catalogBox.put(component.name, trashCounter + 1);
 
         coinsCollected += component.coins;
       } else if (component is TrappedSeaAnimal) {
@@ -56,6 +57,8 @@ class Hook extends SpriteComponent with CollisionCallbacks, HasGameRef {
         coinsCollected += component.coins;
       }
     }
-    box.put("coins", currentCoins + coinsCollected);
+    // print(coinBox);
+    // print(catalogBox.get("Plastic Bottle"));
+    coinBox.put("coins", currentCoins + coinsCollected);
   }
 }

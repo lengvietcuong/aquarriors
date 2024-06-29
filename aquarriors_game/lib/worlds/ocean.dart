@@ -121,7 +121,7 @@ final fishInfo = {
     type: "Clown Fish",
     displaySize: 100,
     description:
-        "Clownfish are vibrant, reef-dwelling fish known for their symbiotic relationship with sea anemones, providing mutual protection and benefiting from the anemones' stinging tentacles.",
+        "Clownfish are vibrant, reef-dwelling fish known for their symbiotic relationship with sea anemones, providing mutual protection and benefiting from their stinging tentacles.",
   ),
   "Blue Tang": SeaAnimal(
     type: "Blue Tang",

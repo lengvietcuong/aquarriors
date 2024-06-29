@@ -117,6 +117,7 @@ class ScrappingHook extends PositionComponent with HasGameRef {
 
     if (points[1] == Offset.zero) {
       reeling = false;
+      remove(hook);
       game.overlays.remove("Reeling Button");
       game.overlays.add("Casting Button");
     }
