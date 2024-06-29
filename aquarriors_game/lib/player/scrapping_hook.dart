@@ -117,14 +117,19 @@ class ScrappingHook extends PositionComponent with HasGameRef {
       max(0, points[1].dy + vy * dt),
     );
 
-    game.camera.viewfinder.zoom =
-        max(1.0, game.camera.viewfinder.zoom - 0.5 * dt);
-
     if (points[1] == Offset.zero) {
       reeling = false;
       game.overlays.remove("Reeling Button");
       game.overlays.add("Casting Button");
+
       (parent as Player).character.current = CharacterState.idle;
+
+      game.camera.viewfinder.zoom =
+          max(1.0, game.camera.viewfinder.zoom - 0.5 * dt);
+
+      game.camera.follow(parent as Player);
+      game.camera.viewfinder.anchor =
+          Anchor(playerOffsetX / size.x, (size.y - playerOffsetY) / size.y);
       removeFromParent();
     }
   }

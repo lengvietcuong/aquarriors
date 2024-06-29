@@ -73,7 +73,7 @@ class Player extends PositionComponent with HasGameRef {
     if (zoomingIn) {
       game.camera.viewfinder.zoom =
           min(1.5, game.camera.viewfinder.zoom + 0.5 * dt);
-      if (game.camera.viewfinder.zoom == 1.5) {
+      if (game.camera.viewfinder.zoom.toStringAsFixed(1) == "1.5") {
         zoomingIn = false;
       }
     }
@@ -112,7 +112,14 @@ class Player extends PositionComponent with HasGameRef {
     scrappingHook.hookDescending = false;
     scrappingHook.reeling = false;
 
+    game.camera.viewfinder.zoom = 1.0;
     zoomingIn = true;
+
+    Future.delayed(const Duration(milliseconds: castingTime), () {
+      game.camera.follow(scrappingHook.hook);
+      game.camera.viewfinder.anchor =
+          Anchor(-(absolutePosition.x / game.size.x), -0.4);
+    });
 
     character.current = CharacterState.casting;
     Future.delayed(const Duration(milliseconds: castingTime), () {
