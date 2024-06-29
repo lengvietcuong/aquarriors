@@ -11,7 +11,7 @@ import 'package:flame/components.dart';
 const double playerOffsetY = 130;
 const double playerOffsetX = 100;
 
-const double waterAcceleration = -200;
+const double waterAcceleration = -100;
 const double boatAcceleration = 50;
 const double boatMaxSpeed = 100;
 

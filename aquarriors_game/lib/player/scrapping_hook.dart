@@ -6,9 +6,8 @@ import 'package:aquarriors_game/player/character.dart';
 import 'package:aquarriors_game/player/hook.dart';
 import 'package:aquarriors_game/player/player.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart';
 
-const double scrappingHookOffsetX = 218;
+const double scrappingHookOffsetX = 220;
 const double scrappingHookOffsetY = -12;
 
 // projectile motion
@@ -46,7 +45,7 @@ class ScrappingHook extends PositionComponent with HasGameRef {
     super.onLoad();
 
     add(hook);
-    position = Vector2(218, -12);
+    position = Vector2(219, -4);
 
     vx = baseVelocity * cos(launchAngle);
     vy = -baseVelocity * sin(launchAngle);
@@ -69,7 +68,7 @@ class ScrappingHook extends PositionComponent with HasGameRef {
       PointMode.polygon,
       points,
       Paint()
-        ..color = Colors.brown
+        ..color = const Color(0xFF55433C)
         ..strokeWidth = 2,
     );
   }
