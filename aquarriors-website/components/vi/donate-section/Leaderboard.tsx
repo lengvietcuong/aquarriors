@@ -7,6 +7,7 @@ import WhaleIcon from "@/components/icons/WhaleIcon";
 import { Badge } from "@/components/ui/badge";
 import { db } from "@/lib/firebaseAdmin";
 import { firestore } from "firebase-admin";
+import { usdToVndRate } from "@/utils/constants";
 
 function renderDonations(donations: DonationDisplay[]) {
   return (
@@ -36,7 +37,7 @@ function renderDonations(donations: DonationDisplay[]) {
           </div>
           <div className="flex flex-col justify-between gap-3 justify-self-end">
             <Badge className="ml-auto text-sm font-medium">
-              ${donation.amount.toLocaleString()}
+              {(donation.amount * usdToVndRate).toLocaleString()}đ
             </Badge>
             <p className="text-xs text-muted-foreground">
               {donation.timestamp}

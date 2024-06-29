@@ -5,6 +5,7 @@ import Leaderboard from "./Leaderboard";
 import { IoIosInformationCircle as InformationIcon } from "react-icons/io";
 import Partners from "./Partners";
 import CTA from "./CTA";
+import { usdToVndRate, kgTrashPerDollar } from "@/utils/constants";
 
 function DonateSection() {
   return (
@@ -20,7 +21,7 @@ function DonateSection() {
         </p>
         <div className="mx-auto mt-4 flex w-fit items-center rounded-lg border p-4">
           <InformationIcon className="mr-2 inline-block size-4 fill-muted-foreground lg:size-6" />
-          $1 = 4kg rác được dọn
+          {usdToVndRate.toLocaleString()}đ = {kgTrashPerDollar}kg rác được dọn
         </div>
         <Partners />
         <div className="mt-16 flex flex-col gap-20 lg:flex-row lg:gap-8">

@@ -16,6 +16,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import AutoNumeric from "autonumeric";
 import useCustomDonationStore from "@/stores/customDonationStore";
 import {
+  usdToVndRate,
   kgTrashPerDollar,
   predefinedDonationTypes,
   predefinedDonationAmounts,
@@ -218,7 +219,7 @@ export function DonationAmountField() {
           <FormLabel>Amount</FormLabel>
           <FormDescription>
             <InfoIcon className="mr-2 inline size-4" />
-            {`Mỗi $1 là ${kgTrashPerDollar}kg rác được dọn.`}
+            {`Mỗi ${usdToVndRate.toLocaleString()}đ là ${kgTrashPerDollar}kg rác được dọn.`}
           </FormDescription>
           <FormControl>
             <RadioGroup
@@ -238,7 +239,7 @@ export function DonationAmountField() {
                     }`}
                   >
                     <span className="font-heading text-lg font-semibold">
-                      ${amount}
+                      {(amount * usdToVndRate).toLocaleString()}đ
                     </span>
                     <span className="text-sm text-muted-foreground">
                       {amount * kgTrashPerDollar}kg
@@ -266,21 +267,18 @@ export function DonationAmountField() {
                   }}
                 >
                   <div>
-                    {isCurrentAmountValid && (
-                      <span className="font-heading text-lg font-semibold">
-                        $
-                      </span>
-                    )}
                     <input
                       ref={inputRef}
                       placeholder="Tuỳ chỉnh"
                       onFocus={() => {
-                        field.onChange(customDonationAmount);
+                        field.onChange(
+                          (customDonationAmount || 0) / usdToVndRate
+                        );
                       }}
                       onChange={() => {
                         const amount =
                           autoNumericRef.current?.getNumber() || null;
-                        field.onChange(amount);
+                        field.onChange((amount || 0) / usdToVndRate);
                         setCustomDonationAmount(amount);
                       }}
                       className={
@@ -288,11 +286,17 @@ export function DonationAmountField() {
                       }
                       style={{ width: customAmountWidth }}
                     />
+                    {isCurrentAmountValid && (
+                      <span className="font-heading text-lg font-semibold">
+                        đ
+                      </span>
+                    )}
                   </div>
                   {isCurrentAmountValid && (
                     <span className="text-sm text-muted-foreground">
                       {(
-                        (customDonationAmount || 0) * kgTrashPerDollar
+                        ((customDonationAmount || 0) / usdToVndRate) *
+                        kgTrashPerDollar
                       ).toLocaleString()}
                       kg
                     </span>

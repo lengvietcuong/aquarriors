@@ -3,6 +3,7 @@ import { FaUserGroup as PeopleIcon } from "react-icons/fa6";
 import { FaDonate as DonationIcon } from "react-icons/fa";
 import { RiDeleteBin2Fill as TrashcanIcon } from "react-icons/ri";
 import { db } from "@/lib/firebaseAdmin";
+import { usdToVndRate } from "@/utils/constants";
 
 async function Progress() {
   async function fetchDonationStats() {
@@ -37,7 +38,7 @@ async function Progress() {
         <DonationIcon className="mr-2 size-12 fill-primary md:mr-3 lg:mr-4" />
         <p>
           <span className="font-heading text-2xl font-bold lg:text-4xl">
-            ${totalAmount.toLocaleString()}
+            {(totalAmount * usdToVndRate / 1_000_000).toLocaleString()}Tr
           </span>
           <br />
           <span className="text-muted-foreground">đã nhận</span>
