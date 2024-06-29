@@ -8,6 +8,7 @@ import VolunteerSection from "@/components/vi/volunteer-section/VolunteerSection
 import SponsorsSection from "@/components/vi/SponsorsSection";
 import ShareSection from "@/components/vi/ShareSection";
 import GameSection from "@/components/vi/game-section/GameSection";
+import FAQSection from "@/components/vi/FAQSection";
 import Header from "@/components/vi/header/Header";
 import Footer from "@/components/vi/Footer";
 
@@ -26,6 +27,7 @@ export default function Home() {
         <SponsorsSection />
         <ShareSection />
         <GameSection />
+        <FAQSection />
       </main>
       <Footer />
     </>
