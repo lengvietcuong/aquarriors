@@ -11,7 +11,7 @@ function StatisticsSection() {
             10-233
           </p>
           <p className="mt-4 lg:mt-5 text-muted-foreground text-center">
-            <span className="font-medium text-destructive">
+            <span className="font-semibold text-destructive">
               plastic pieces per 1m<sup>3</sup> of water
             </span>{" "}
             from the Saigon River
