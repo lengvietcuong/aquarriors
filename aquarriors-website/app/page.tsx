@@ -3,6 +3,7 @@ import ProblemsSection from "@/components/ProblemsSection";
 import StatisticsSection from "@/components/StatisticsSection";
 import WhyContributeSection from "@/components/WhyContributeSection";
 import DonateSection from "@/components/donate-section/DonateSection";
+import VolunteerSection from "@/components/volunteer-section/VolunteerSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <StatisticsSection />
       <WhyContributeSection />
       <DonateSection />
+      <VolunteerSection />
     </main>
   );
 }
