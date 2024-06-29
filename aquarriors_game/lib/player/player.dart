@@ -56,8 +56,13 @@ class Player extends PositionComponent with HasGameRef {
     if (!backward) {
       velocity = max(0, velocity + waterAcceleration * dt);
     } else {
-      velocity = max(0, velocity - boatAcceleration * dt);
+      velocity = min(0, velocity - waterAcceleration * dt);
     }
+    if (velocity == 0) {
+      floating = false;
+      backward = false;
+    }
+
     position.translate(velocity * dt, 0);
   }
 }

@@ -37,12 +37,12 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
   @override
   void onLongPressStart(LongPressStartInfo info) {
     super.onLongPressStart(info);
-    if (!player.sailing) {
-      player.sailing = true;
-      if (info.eventPosition.global.x < size.x / 2) {
-        player.backward = true;
-      }
+
+    player.sailing = true;
+    if (info.eventPosition.global.x < size.x / 2) {
+      player.backward = true;
     }
+
     print("long press");
   }
 
@@ -50,10 +50,9 @@ class AquarriorsGame extends FlameGame with TapDetector, LongPressDetector {
   void onLongPressEnd(LongPressEndInfo info) {
     super.onLongPressEnd(info);
 
-    if (player.sailing) {
-      player.sailing = false;
-      player.floating = true;
-    }
+    player.sailing = false;
+    player.floating = true;
+
     print("long press end");
   }
 
