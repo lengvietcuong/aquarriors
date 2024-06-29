@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { IoMdHeart as Heart } from "react-icons/io";
 import { FaFistRaised as Fist } from "react-icons/fa";
 

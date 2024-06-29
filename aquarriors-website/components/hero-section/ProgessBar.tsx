@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Progress } from "../ui/progress";
+import { Progress } from "@/components/ui/progress";
 
 function ProgressBar() {
   const [percentage, setPercentage] = useState(0);
