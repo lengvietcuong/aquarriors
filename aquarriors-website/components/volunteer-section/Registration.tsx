@@ -3,7 +3,7 @@ import { FaLocationDot as LocationIcon } from "react-icons/fa6";
 import { FaClock as ClockIcon } from "react-icons/fa";
 import { IoMdCheckmark as CheckMarkIcon } from "react-icons/io";
 import { FaFistRaised as Fist } from "react-icons/fa";
-import { Button } from "../ui/button";
+import VolunteerButton from "@/components/big-buttons/VolunteerButton";
 
 function Registration() {
   return (
@@ -18,7 +18,7 @@ function Registration() {
           support so you can contribute safely and effectively. Come make new
           friends and create a lasting impact together!
         </p>
-        <div className="mt-8 gap-12 lg:mt-12 flex-col md:flex-row flex">
+        <div className="mt-8 gap-12 lg:mt-12 flex-col md:flex-row flex mb-16">
           <div className="flex-1 space-y-6">
             <div className="flex gap-3 items-center">
               <CaldendarIcon className="size-6 fill-primary" />
@@ -50,13 +50,7 @@ function Registration() {
             </div>
           </div>
         </div>
-        <Button
-          size="lg"
-          className="mt-10 lg:mt-16 flex w-full px-8 py-6 text-lg lg:px-12 lg:py-8 lg:text-xl"
-        >
-          <Fist className="mr-2 size-5 lg:mr-3 lg:size-7" />
-          Register now
-        </Button>
+        <VolunteerButton />
       </div>
       <iframe
         src="https://www.youtube.com/embed/OaxKVKtfeVI?rel=0"

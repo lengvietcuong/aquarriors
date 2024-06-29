@@ -1,12 +1,9 @@
-"use client";
-
-import { Button } from "../ui/button";
-import { SparklesCore } from "@/components//ui/sparkles";
-import { IoMdHeart as Heart } from "react-icons/io";
+import DonateButton from "@/components/big-buttons/DonateButton";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 function CTA() {
   return (
-    <div className="relative py-20 md:py-24 mb-16">
+    <div className="relative mb-16 py-20 lg:py-24">
       <SparklesCore
         id="tsparticlesfullpage"
         background="transparent"
@@ -25,13 +22,7 @@ function CTA() {
             make a difference?
           </span>
         </h3>
-        <Button
-          size="lg"
-          className="flex max-w-96 px-8 py-6 text-lg md:px-12 md:py-8 md:text-xl lg:px-16 lg:py-9 lg:text-2xl"
-        >
-          <Heart className="mr-2 size-5 md:mr-3 md:size-7 lg:mr-4 lg:size-8" />
-          Donate now
-        </Button>
+        <DonateButton />
       </div>
     </div>
   );

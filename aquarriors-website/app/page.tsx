@@ -1,3 +1,4 @@
+import PopupForms from "@/components/forms/PopupForms";
 import HeroSection from "@/components/hero-section/HeroSection";
 import ProblemsSection from "@/components/ProblemsSection";
 import StatisticsSection from "@/components/StatisticsSection";
@@ -11,6 +12,7 @@ import GameSection from "@/components/game-section/GameSection";
 export default function Home() {
   return (
     <main className="pb-16">
+      <PopupForms />
       <HeroSection />
       <ProblemsSection />
       <StatisticsSection />
