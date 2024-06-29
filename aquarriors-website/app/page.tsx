@@ -5,6 +5,8 @@ import WhyContributeSection from "@/components/WhyContributeSection";
 import DonateSection from "@/components/donate-section/DonateSection";
 import VolunteerSection from "@/components/volunteer-section/VolunteerSection";
 import SponsorsSection from "@/components/SponsorsSection";
+import ShareSection from "@/components/ShareSection";
+import GameSection from "@/components/game-section/GameSection";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
       <DonateSection />
       <VolunteerSection />
       <SponsorsSection />
+      <ShareSection />
+      <GameSection />
     </main>
   );
 }
