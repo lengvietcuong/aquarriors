@@ -16,7 +16,7 @@ function WhyContributeSection() {
         <div className="flex flex-col justify-center lg:flex-row gap-8 mt-10 md:mt-12 lg:mt-16">
           <div className="border rounded-lg p-8 lg:p-10 flex-1 max-w-lg mx-auto">
             <div className="flex items-center gap-4">
-              <HealthIcon className="size-12 fill-primary md:size-16" />
+              <HealthIcon className="size-12 fill-primary md:size-16 flex-shrink-0" />
               <h3 className="font-bold text-xl lg:text-2xl">
                 Cải thiện sức khỏe cộng đồng
               </h3>
@@ -27,7 +27,7 @@ function WhyContributeSection() {
           </div>
           <div className="border rounded-lg p-8 lg:p-10 flex-1 max-w-lg mx-auto">
             <div className="flex items-center gap-4">
-              <FishIcon className="size-12 fill-primary md:size-16" />
+              <FishIcon className="size-12 fill-primary md:size-16 flex-shrink-0" />
               <h3 className="font-bold text-xl lg:text-2xl">
                 Bảo vệ sinh vật thủy sinh
               </h3>
@@ -38,7 +38,7 @@ function WhyContributeSection() {
           </div>
           <div className="border rounded-lg p-8 lg:p-10 flex-1 max-w-lg mx-auto">
             <div className="flex items-center gap-4">
-              <FlowerIcon className="size-12 fill-primary md:size-16" />
+              <FlowerIcon className="size-12 fill-primary md:size-16 flex-shrink-0" />
               <h3 className="font-bold text-xl lg:text-2xl">
                 Bảo tồn vẻ đẹp
               </h3>
