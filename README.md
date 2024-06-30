@@ -41,11 +41,11 @@ If you'd like to test the PayPal payment method in the donation form, please use
 ### What is it for?
 - Clean virtual trash & save sea animals
 - Learn while playing
-- All ads revenue goes to the project
+- All ad revenue goes to the project
 
 ### Notable features:
 - Brief popup displaying educational information about an aquatic animal or piece of trash when it is caught (raise awareness)
-- Increase user-retention with an aquarium for rescued fish and the ability to build amazing sculptures with collected trash
+- Increase user retention with an aquarium for rescued fish and the ability to build amazing sculptures with collected trash
 
 ### Tech used:
 - Flutter (powerful cross-platform SDK)
