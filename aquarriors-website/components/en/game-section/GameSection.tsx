@@ -1,5 +1,3 @@
-import Image from "next/image";
-import gameBanner from "@/public/game-banner.jpg";
 import StoreButtons from "./StoreButtons";
 
 function GameSection() {
@@ -9,13 +7,13 @@ function GameSection() {
         Play our game
       </h2>
       <div className="flex flex-col justify-center gap-2 lg:gap-16 lg:flex-row-reverse lg:justify-end">
-        <div className="flex-1">
-          <Image
-            src={gameBanner}
-            className="rounded-lg"
-            alt="Fishing and life"
-          />
-        </div>
+        <iframe
+          src="https://www.youtube.com/embed/58o6-ZPYeJc?rel=0"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          className="block flex-1"
+        ></iframe>
         <div className="flex-1">
           <h2 className="hidden font-bold mb-8 lg:block text-right text-5xl">
             Play our game
